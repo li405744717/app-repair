@@ -1,0 +1,19 @@
+@import "@/style/func";
+.house_item{
+  width: 100%;
+  padding:pr(24);
+  background-color: white;
+  padding-bottom: 0;
+  margin-bottom: pr(20);
+}
+
+.list_order_btn{
+  background: #FFAB19;
+  border-radius: pr(34);
+  padding:pr(14) pr(65)
+}
+.list_phone_btn{
+  padding:0 pr(30);
+  border: 1px solid #FFB84E;
+  border-radius: pr(18);
+}

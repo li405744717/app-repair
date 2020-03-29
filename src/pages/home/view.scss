@@ -1,0 +1,18 @@
+@function pr($px) { //$px为需要转换的字号
+  @return $px / 75 * 1rem;
+}
+
+.home_menu_item {
+  width: pr(330);
+  margin-right: pr(24);
+  padding: pr(32);
+  box-shadow: 0 pr(4) pr(32) rgba(186, 191, 197, 0.2);
+  border-radius: pr(10);
+  background: white;
+  margin-bottom: pr(24);
+  margin-left: pr(32);
+}
+
+.home_menu_item:nth-child(2n) {
+  margin-left: 0;
+}

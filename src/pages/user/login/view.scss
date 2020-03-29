@@ -1,0 +1,43 @@
+@function pr($px) { //$px为需要转换的字号
+  @return $px / 75 * 1rem;
+}
+
+.width_50 {
+  width: 50%;
+}
+
+.login_container {
+  .am-list {
+    border: 1px solid #EBEBEB;
+  }
+
+  position: absolute;
+}
+
+.login_mid_bg {
+  background: #FFAB19;
+}
+
+.login_view {
+  width: pr(690);
+  background: white;
+  border-radius: pr(40);
+  padding: pr(90) pr(60) pr(30) pr(60)
+}
+
+.login_input_view {
+  width: pr(558);
+  height: pr(100);
+  border-radius: pr(48.5);
+  border: 1px solid #5C6167;
+
+  .am-list-item .am-input-control input {
+    font-size: pr(30);
+  }
+}
+
+.login_btn_view {
+  background-image: linear-gradient(to right, #FFB021, #FDBA41);
+  padding: pr(20) 0;
+  border-radius: pr(20);
+}

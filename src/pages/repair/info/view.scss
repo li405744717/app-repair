@@ -1,0 +1,49 @@
+@import "@/style/func";
+.house_item{
+  width: 100%;
+  padding:pr(24);
+  background-color: white;
+  padding-bottom: 0;
+  margin-bottom: pr(20);
+}
+
+.list_phone_btn{
+  padding:0 pr(30);
+  border: 1px solid #FFB84E;
+  border-radius: pr(18);
+}
+.repair_info_pay_view{
+  border-radius: pr(20);
+  padding:pr(28);
+  width: pr(690);
+  background: white;
+  box-shadow: pr(5) pr(5) pr(35) rgba(53, 50, 46, 0.07);
+}
+.repair_info_input_view{
+  border-bottom: 1px solid #333333;
+  width: pr(150);
+  height: pr(46) !important;
+  min-height: unset !important;
+  input{
+    font-size: pr(40) !important;
+  }
+}
+.repair_info_submit_btn{
+  background: #FFAB19;
+  border-radius: pr(34);
+  padding:pr(14) pr(95);
+}
+.margin_bottom_4{
+  margin-bottom: pr(4);
+}
+.pay_result_view{
+  padding:pr(50) 0;
+  width: 100%;
+  background-color: white;
+}
+.re_pay_btn_view_2{
+  background-color: transparent;
+  padding: pr(14) pr(60);
+  border-radius: pr(10);
+  border: 1px solid #FFAB19;
+}
