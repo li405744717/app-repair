@@ -9,7 +9,7 @@ import UserAPI from '@/commAction/user'
 import PropTypes from 'prop-types'
 import wx from '@/common/wx'
 import {GData as app} from "@/common/global_data";
-import {List, InputItem, Button,Icon} from 'antd-mobile'
+import {List, InputItem, Button, Icon} from 'antd-mobile'
 
 class Login extends React.Component {
   static propTypes = {}
@@ -67,11 +67,11 @@ class Login extends React.Component {
     if (token) {
       let RedirectUrl = this.props.location.state ? this.props.location.state.from.pathname : null
       let RedirectUrlSearch = this.props.location.state ? this.props.location.state.from.search : ''
-      console.log('RedirectUrl', RedirectUrl + RedirectUrlSearch)
+      console.log('RedirectUrl', RedirectUrl, RedirectUrlSearch)
       if (RedirectUrl !== '/') {
         // 登陆成功之后的跳转
         this.props.history.replace(RedirectUrl + RedirectUrlSearch)
-      }else{
+      } else {
         this.props.history.replace('/repair')
       }
 
@@ -91,7 +91,8 @@ class Login extends React.Component {
             <span className="margin_bottom_30 text_80 white bold">登录</span>
             <div className="flex_column login_view">
               <div className="login_input_view flex_row align_center padding_LR_40">
-                <InputItem className="text_30"  value={username} onChange={val => this.setInputValue(val, 'username')} placeholder="输入您的帐号"/>
+                <InputItem className="text_30" value={username} onChange={val => this.setInputValue(val, 'username')}
+                           placeholder="输入您的帐号"/>
               </div>
               <div className="login_input_view flex_row align_center padding_LR_40 margin_top_40">
                 <InputItem className="text_30" value={password} onChange={val => this.setInputValue(val, 'password')}
