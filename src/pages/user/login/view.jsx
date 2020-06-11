@@ -31,7 +31,7 @@ class Login extends React.Component {
     this.initData(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.initData(nextProps)
     // utils.reSetPropsState(this, nextProps)
   }
@@ -52,13 +52,13 @@ class Login extends React.Component {
     // this.props.login()
     wx.showLoading({title: '请稍后...', mask: true})
     var params = {
-      username: 'zsw',
-      password: 'zxcasd123'
+      username: '13479186301',
+      password: '123456'
     }
     UserAPI.login(params).then(data => {
       wx.hideLoading()
       this.props.setUser(data)
-      this.handleAction(data.token)
+      // this.handleAction(data.token)
     })
     // app.globalData.token = '4313120545a40d6355ab736e9e6566b0cb709170'
   }

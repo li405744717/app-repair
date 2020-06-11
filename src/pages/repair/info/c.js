@@ -11,6 +11,7 @@ import utils from '@/common/utils'
 import $ from 'jquery'
 import store from '@/Store'
 import {} from '../list/actions'
+import userAPI from '@/commAction/user'
 
 class RepairInfo extends React.Component {
   static propTypes = {}
@@ -38,34 +39,35 @@ class RepairInfo extends React.Component {
   }
 
 
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   onLoad(props) {
-    let order = {
-      id: 1,
-      images: [require('@/img/ad_1.png'), require('@/img/ad_1.png'), require('@/img/ad_1.png')],
-      remark: '家里马桶堵塞，请来维修。客户自己输入的报修简要，不过140个字',
-      create_time: '02-22',
-      phone: '13412341234',
-      status: 'holding',
-      apartment: {
-        city: {
-          province: '江西省',
-          city: '南昌市',
-          town: '聊城'
-        },
-        apartment: '东昌首府',
-        house: {
-          building: '七期住宅-1',
-          unit: '20栋',
-          room: '2号'
-        }
-      },
-    }
-    this.setState({
-      order
+    var options = props.match.params
+    this.id = options.id
+
+    userAPI.repair_info(this.id).then(data => {
+      var item = data.data
+      let order = {
+        id: item.id,
+        images: item.photos,
+        remark: item.detail,
+        create_time: item.order_time,
+        phone: item.contact,
+        address: item.address,
+        status: item.charge_status
+      }
+
+      this.setState({
+        order
+      })
+
+      if (order.status === 'done') {
+        this.startTimer()
+      }
     })
-    if (order.status === 'payed') {
-      this.startTimer()
-    }
+
 
   }
 
@@ -81,18 +83,20 @@ class RepairInfo extends React.Component {
 
   submit() {
     let {order} = this.state
-    order.status = 'paying'
-    this.setState({
-      order
+    var paras = {
+      repair_status: 'done',
+      charge_status: 'wait'
+    }
+    userAPI.repair_update(this.id, paras).then(data => {
+      setTimeout(() => {
+        order.status = 'done'
+        this.setState({
+          order
+        }, () => {
+          this.startTimer()
+        })
+      }, 3000)
     })
-    setTimeout(()=>{
-      order.status = 'payed'
-      this.setState({
-        order
-      },()=>{
-        this.startTimer()
-      })
-    },3000)
   }
 
   startTimer() {

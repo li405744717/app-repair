@@ -12,14 +12,12 @@ export default function renderView(page) {
   const {pageId, code} = page
   return (<div className="page bg_fg flex_column height_100" id={pageId}>
     {
-      order && order.status != 'payed' ?
+      order && order.status != 'done' ?
         <>
           <div className="house_item flex_column">
             <div className="flex_row align_center  ">
               <img className="icon_location" src={require('@/img/icon_location.png')}/>
-              <span className="text_30 margin_left_20 text_line_1">{order.apartment.city.town}<span
-                className="text_30 margin_left_20">{order.apartment.apartment}</span><span
-                className="text_30 margin_left_20">{order.apartment.house.building}-{order.apartment.house.unit}-{order.apartment.house.room}</span></span>
+              <span className="text_30 margin_left_20 text_line_1">{order.address}</span>
               <div className="flex_1"/>
               <div className="default_view text_20 c_FFAB19">默认地址</div>
             </div>
@@ -69,7 +67,7 @@ export default function renderView(page) {
             </div>
           </div>
         </> :
-        order && order.status == 'payed' ?
+        order && order.status == 'done' ?
           <>
             <div className="pay_result_view flex_column center bg_white">
               <img src={require('@/img/icon_status_success.png')} className="icon_status_error"/>
